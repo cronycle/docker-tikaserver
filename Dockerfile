@@ -1,7 +1,8 @@
+# This comes from https://github.com/LogicalSpark/docker-tikaserver/blob/master/Dockerfile
 FROM ubuntu:latest
 MAINTAINER david@logicalspark.com
 
-ENV TIKA_VERSION 1.14
+ENV TIKA_VERSION 1.17
 ENV TIKA_SERVER_URL https://www.apache.org/dist/tika/tika-server-$TIKA_VERSION.jar
 
 RUN	apt-get update \
@@ -18,4 +19,4 @@ RUN	apt-get update \
 	&& apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 9998
-ENTRYPOINT java -jar /tika-server-${TIKA_VERSION}.jar -h 0.0.0.0 -enableUnsecureFeatures -enableFileUrl
+ENTRYPOINT java -jar /tika-server-${TIKA_VERSION}.jar -h 0.0.0.0
